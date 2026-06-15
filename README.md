@@ -40,16 +40,12 @@ python main.py
 
 
 ## Requirements
-**
+
 Python 3.10+
-
 customtkinter
-
 tksvg
-
 plyer
-
-playsound3**
+playsound3
 
 
 
