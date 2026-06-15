@@ -1,6 +1,6 @@
 import customtkinter
 from tkinter import *
-import tksvg
+from PIL import Image
 from plyer import notification
 from playsound3 import playsound
 import os
@@ -206,10 +206,25 @@ app.geometry("800x700")
 app.title("Pomoly")
 app.iconbitmap(resource_path("icon.ico"))
 
-play_icon = tksvg.SvgImage(file="./assets/play-solid-full.svg", scaletowidth=64)
-pause_icon = tksvg.SvgImage(file="./assets/pause-solid-full.svg", scaletowidth=64)
-reset_icon = tksvg.SvgImage(file="./assets/arrow-rotate-left-solid-full.svg", scaletowidth=64)
-settings_icon = tksvg.SvgImage(file="./assets/gear-solid-full.svg", scaletowidth="42")
+play_icon = customtkinter.CTkImage(
+    light_image=Image.open(resource_path("assets/play.png")),
+    size=(64, 64)
+)
+
+pause_icon = customtkinter.CTkImage(
+    light_image=Image.open(resource_path("assets/pause.png")),
+    size=(64, 64)
+)
+
+reset_icon = customtkinter.CTkImage(
+    light_image=Image.open(resource_path("assets/reset.png")),
+    size=(64, 64)
+)
+
+settings_icon = customtkinter.CTkImage(
+    light_image=Image.open(resource_path("assets/settings.png")),
+    size=(42, 42)
+)
 
 app.grid_columnconfigure(0, weight=1)
 app.grid_columnconfigure(2, weight=1)
