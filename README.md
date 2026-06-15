@@ -4,7 +4,7 @@ Pomoly is a simple Pomodoro style desktop productivity app built with Python.
 
 It helps users stay focused by alternating between Work and Break sessions with notifications and sound alerts. 
 
-*This is a development-friendly project that can be freely modified and extended.*
+***This is a development-friendly project that can be freely modified and extended.***
 
 
 ## Features
