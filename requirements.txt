@@ -1,4 +1,4 @@
 customtkinter==5.2.2
 plyer==2.1.0
-playsound3>=3.0.0
-tksvg
+playsound3
+Pillow
