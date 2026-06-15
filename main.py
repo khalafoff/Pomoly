@@ -1,15 +1,15 @@
 import customtkinter
 from tkinter import *
-from PIL import Image
 from plyer import notification
 from playsound3 import playsound
-import os
-import sys
+from PIL import Image, ImageTk
+import webbrowser
+import os, sys
 
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
-    except Exception:
+    except:
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
@@ -55,7 +55,7 @@ def countdown():
             mode = "Break"
             time_left = break_time * 60
 
-            playsound("./assets/notify.mp3")
+            playsound(resource_path("assets/notify.mp3"))
 
             notification.notify(
             title='Alert',
@@ -67,7 +67,7 @@ def countdown():
             mode = "Work"
             time_left = work_time * 60
 
-            playsound("./assets/notify.mp3")
+            playsound(resource_path("assets/notify.mp3"))
 
             notification.notify(
             title='Alert',
@@ -135,6 +135,9 @@ def clamp_time(value):
 
     return max(1, min(value, 60))
 
+def open_github(event):
+    webbrowser.open("https://github.com/khalafoff")
+
 def start_timer():
     global running
 
@@ -175,10 +178,16 @@ def open_settings():
 
     settings_window = customtkinter.CTkToplevel(app)
     settings_window.geometry("300x200")
+    try:
+        settings_window.iconbitmap(resource_path("icon.ico"))
+    except:
+        icon_image = Image.open(resource_path("icon.ico"))
+        icon_image = icon_image.resize((32, 32))
+        icon_photo = ImageTk.PhotoImage(icon_image)
+        settings_window.wm_iconphoto(True, icon_photo)
     settings_window.title("Settings")
     settings_window.transient(app)
     settings_window.geometry("+500+250")
-    settings_window.iconbitmap(resource_path("icon.ico"))
 
     settings_window.grid_columnconfigure(0, weight=1)
 
@@ -203,8 +212,15 @@ def open_settings():
 
 app = customtkinter.CTk()
 app.geometry("800x700")
+try:
+    app.iconbitmap(resource_path("icon.ico")) 
+except:
+    icon_image = Image.open(resource_path("icon.ico"))
+    icon_image = icon_image.resize((32, 32))
+    icon_photo = ImageTk.PhotoImage(icon_image)
+    app.wm_iconphoto(True, icon_photo) 
 app.title("Pomoly")
-app.iconbitmap(resource_path("icon.ico"))
+
 
 play_icon = customtkinter.CTkImage(
     light_image=Image.open(resource_path("assets/play.png")),
@@ -238,6 +254,10 @@ settings_button = customtkinter.CTkButton(app, image=settings_icon, command=open
 start_button = customtkinter.CTkButton(app, image = play_icon, text="", command=start_timer, font=(font, 15), fg_color="white",width=20, height=40)
 pause_button = customtkinter.CTkButton(app, image= pause_icon , text="", command=pause_timer, font=(font, 15), fg_color="white", width=20, height=40)
 reset_button = customtkinter.CTkButton(app, image= reset_icon, text="", command=reset_timer, font=(font, 15), fg_color="red", width=20, height=40)
+
+developer_label = customtkinter.CTkLabel(app, text="developed by khalafoff", font=(font, 12), text_color="#4a9eff", cursor="hand2")
+developer_label.place(anchor="s", rely=0.98, relx=0.5)
+developer_label.bind("<Button-1>", open_github)
 
 timer_label.place(anchor="center", rely=0.35, relx=0.5)
 
