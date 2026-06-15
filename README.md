@@ -41,18 +41,18 @@ python main.py
 
 ## Requirements
 
-Python 3.10+
-customtkinter
-tksvg
-plyer
-playsound3
+- Python 3.10+
+- customtkinter
+- tksvg
+- plyer
+- playsound3
 
 
 
 ## Limits
 
-Minimum time: 1 minute
-Maximum time: 60 minutes
+- Minimum time: 1 minute
+- Maximum time: 60 minutes
 
 
 ## How it works
