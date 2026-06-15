@@ -1,0 +1,4 @@
+customtkinter
+tksvg
+plyer
+playsound3
