@@ -60,5 +60,7 @@ python main.py
 Pomoly uses a simple state machine:
 
 Work mode >> Break mode
+
 Break mode >> Work mode
+
 Timer automatically switches sessions when reaching 0
