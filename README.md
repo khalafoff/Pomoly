@@ -4,7 +4,6 @@ Pomoly is a simple Pomodoro style desktop productivity app built with Python.
 
 It helps users stay focused by alternating between Work and Break sessions with notifications and sound alerts.
 
----
 
 ## Features
 
@@ -16,15 +15,13 @@ It helps users stay focused by alternating between Work and Break sessions with 
 - Pause / Resume / Reset controls
 - Settings window 
 
----
 
 ## Preview
 
 ![App Screenshot](screenshots/app.png)
 
----
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 git clone https://github.com/khalafoff/Pomoly.git
