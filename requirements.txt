@@ -1,4 +1,4 @@
 customtkinter
 winotify
-pygame
+playsound3
 Pillow
