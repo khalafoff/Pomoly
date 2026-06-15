@@ -29,3 +29,36 @@ It helps users stay focused by alternating between Work and Break sessions with 
 git clone https://github.com/khalafoff/Pomoly.git
 cd Pomoly
 pip install -r requirements.txt
+```
+
+
+## Run
+
+```bash
+python main.py
+```
+
+
+## Requirements
+
+**Python 3.10+
+customtkinter
+tksvg
+plyer
+playsound3
+**
+
+
+## Limits
+
+Minimum time: 1 minute
+Maximum time: 60 minutes
+
+
+## How it works
+
+Pomoly uses a simple state machine:
+
+Work mode >> Break mode
+Break mode >> Work mode
+Timer automatically switches sessions when reaching 0
