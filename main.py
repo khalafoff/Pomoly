@@ -1,10 +1,15 @@
 import customtkinter
 from tkinter import *
-from plyer import notification
+from winotify import Notification
 from playsound3 import playsound
 from PIL import Image, ImageTk
 import webbrowser
 import os, sys
+import threading
+
+
+def play_sound():
+    playsound(resource_path("assets/notify.mp3"))
 
 def resource_path(relative_path):
     try:
@@ -13,6 +18,15 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
+def notify_user(title, message):
+    toast = Notification(
+        app_id="Pomoly",
+        title=title,
+        msg=message,
+        duration="short"
+    )
+    toast.show()
 
 
 work_time=25
@@ -55,26 +69,15 @@ def countdown():
             mode = "Break"
             time_left = break_time * 60
 
-            playsound(resource_path("assets/notify.mp3"))
-
-            notification.notify(
-            title='Alert',
-            message='Work done. Take a break.',
-            app_name='Pomoly',
-            timeout=4
-            )
+            threading.Thread(target=play_sound, daemon=True).start()
+            threading.Thread(target=notify_user, args=('Alert', 'Work done. Take a break.'), daemon=True).start()
         else:
             mode = "Work"
             time_left = work_time * 60
 
-            playsound(resource_path("assets/notify.mp3"))
-
-            notification.notify(
-            title='Alert',
-            message='Work session started. Focus.',
-            app_name='Pomoly',
-            timeout=4
-            )
+            threading.Thread(target=play_sound, daemon=True).start()
+            threading.Thread(target=notify_user, args=('Alert', 'Work session started. Focus.'), daemon=True).start()
+            
 
     update_label()
     update_status_label()
@@ -251,9 +254,9 @@ status_label= customtkinter.CTkLabel(app, text=f"{mode}", font=(font, 40), text_
 
 settings_button = customtkinter.CTkButton(app, image=settings_icon, command=open_settings, text="", height=40, width=20, fg_color="transparent", hover=False)
 
-start_button = customtkinter.CTkButton(app, image = play_icon, text="", command=start_timer, font=(font, 15), fg_color="white",width=20, height=40)
-pause_button = customtkinter.CTkButton(app, image= pause_icon , text="", command=pause_timer, font=(font, 15), fg_color="white", width=20, height=40)
-reset_button = customtkinter.CTkButton(app, image= reset_icon, text="", command=reset_timer, font=(font, 15), fg_color="red", width=20, height=40)
+start_button = customtkinter.CTkButton(app, image = play_icon, text="", command=start_timer, font=(font, 15), fg_color="white",width=20, height=40, hover_color="gray")
+pause_button = customtkinter.CTkButton(app, image= pause_icon , text="", command=pause_timer, font=(font, 15), fg_color="white", width=20, height=40, hover_color="gray")
+reset_button = customtkinter.CTkButton(app, image= reset_icon, text="", command=reset_timer, font=(font, 15), fg_color="red", width=20, height=40, hover_color="red4")
 
 developer_label = customtkinter.CTkLabel(app, text="developed by khalafoff", font=(font, 12), text_color="#4a9eff", cursor="hand2")
 developer_label.place(anchor="s", rely=0.98, relx=0.5)
