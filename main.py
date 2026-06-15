@@ -167,7 +167,6 @@ def open_settings():
     settings_window.geometry("300x200")
     settings_window.title("Settings")
     settings_window.transient(app)
-
     settings_window.geometry("+500+250")
 
     settings_window.grid_columnconfigure(0, weight=1)
@@ -194,6 +193,7 @@ def open_settings():
 app = customtkinter.CTk()
 app.geometry("800x700")
 app.title("Pomoly")
+app.iconbitmap("icon.ico")
 
 
 play_icon = tksvg.SvgImage(file="./assets/play-solid-full.svg", scaletowidth=64)
