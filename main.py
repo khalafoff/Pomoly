@@ -3,6 +3,16 @@ from tkinter import *
 import tksvg
 from plyer import notification
 from playsound3 import playsound
+import os
+import sys
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 work_time=25
@@ -168,6 +178,7 @@ def open_settings():
     settings_window.title("Settings")
     settings_window.transient(app)
     settings_window.geometry("+500+250")
+    settings_window.iconbitmap(resource_path("icon.ico"))
 
     settings_window.grid_columnconfigure(0, weight=1)
 
@@ -193,8 +204,7 @@ def open_settings():
 app = customtkinter.CTk()
 app.geometry("800x700")
 app.title("Pomoly")
-app.iconbitmap("icon.ico")
-
+app.iconbitmap(resource_path("icon.ico"))
 
 play_icon = tksvg.SvgImage(file="./assets/play-solid-full.svg", scaletowidth=64)
 pause_icon = tksvg.SvgImage(file="./assets/pause-solid-full.svg", scaletowidth=64)
