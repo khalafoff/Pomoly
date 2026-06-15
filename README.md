@@ -43,7 +43,7 @@ python main.py
 
 - Python 3.10+
 - customtkinter
-- tksvg
+- pillow
 - plyer
 - playsound3
 
