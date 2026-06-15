@@ -44,7 +44,7 @@ python main.py
 - Python 3.10+
 - customtkinter
 - pillow
-- plyer
+- winotify
 - playsound3
 
 
